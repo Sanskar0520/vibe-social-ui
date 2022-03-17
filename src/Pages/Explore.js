@@ -7,19 +7,23 @@ import Midsection from "../Components/Midsection";
 import Bottom from "../Components/Bottom";
 import ExploreSection from "../Components/ExploreSection";
 
-function Explore() {
-  return (
-    <HStack padding={2} alignItems={"start"} bg={useColorModeValue("#0A131D")}>
-      <SimpleSidebar />
+function Explore({ provider, program }) {
+    return (
+        <HStack
+            padding={2}
+            alignItems={"start"}
+            bg={useColorModeValue("#0A131D")}
+        >
+            <SimpleSidebar />
 
-      <ExploreSection />
+            <ExploreSection provider={provider} program={program} />
 
-      <VStack spacing={5}>
-        <Searchbar />
-        <Rightpane />
-      </VStack>
-    </HStack>
-  );
+            <VStack spacing={5}>
+                <Searchbar />
+                <Rightpane />
+            </VStack>
+        </HStack>
+    );
 }
 
 export default Explore;

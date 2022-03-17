@@ -78,7 +78,15 @@ function App() {
                             }
                         />
                         <Route path="/deets" element={<AccDetails />} />
-                        <Route path="/explore" element={<Explore />} />
+                        <Route
+                            path="/explore"
+                            element={
+                                <Explore
+                                    provider={web3Provider}
+                                    program={web3Program}
+                                />
+                            }
+                        />
                     </Routes>
                 </BrowserRouter>
             </Box>
