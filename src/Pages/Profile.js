@@ -4,7 +4,7 @@ import ProfileBottom from "../Components/ProfileBottom";
 import ProfileMidsection from "../Components/ProfileMidsection";
 import SimpleSidebar from "../Components/sidebar";
 
-function Profile() {
+function Profile({ provider, program }) {
     return (
         <HStack
             padding={2}
@@ -14,7 +14,7 @@ function Profile() {
             <SimpleSidebar />
             <VStack>
                 <ProfileMidsection />
-                <ProfileBottom />
+                <ProfileBottom provider={provider} program={program} />
             </VStack>
         </HStack>
     );

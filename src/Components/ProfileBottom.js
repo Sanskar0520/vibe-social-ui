@@ -11,7 +11,7 @@ import {
 import React from "react";
 import UserVibes from "./UserVibes";
 
-function ProfileBottom() {
+function ProfileBottom({ provider, program }) {
     return (
         <Box
             bg={useColorModeValue("#11263E")}
@@ -34,7 +34,7 @@ function ProfileBottom() {
                 </TabList>
                 <TabPanels>
                     <TabPanel>
-                        <UserVibes />
+                        <UserVibes provider={provider} program={program} />
                     </TabPanel>
                     <TabPanel>
                         <p>two!</p>

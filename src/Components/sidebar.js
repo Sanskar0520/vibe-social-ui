@@ -75,7 +75,6 @@ const SidebarContent = () => {
                 h="20"
                 alignItems="center"
                 ml="20"
-                
                 justifyContent="space-between"
             >
                 {/*<img src={"https://synthesize.s3.ap-south-1.amazonaws.com/images/Aces+Labs+(3).png"} />*/}
@@ -118,7 +117,7 @@ const NavItem = ({ icon, name, url }) => {
             <Flex
                 alignItems={"center"}
                 p="6"
-             paddingLeft={20}
+                paddingLeft={20}
                 fontSize={18}
                 marginTop={4}
                 borderRadius="lg"
