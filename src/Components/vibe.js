@@ -11,7 +11,7 @@ import {
     VStack,
 } from "@chakra-ui/react";
 import { Program, Provider, web3 } from "@project-serum/anchor";
-import { clusterApiUrl, Connection, PublicKey } from "@solana/web3.js";
+import { Connection, PublicKey } from "@solana/web3.js";
 
 const programID = new PublicKey(idl.metadata.address);
 const network = "http://127.0.0.1:8899";
