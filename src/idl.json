@@ -1,0 +1,392 @@
+{
+    "version": "0.1.0",
+    "name": "solvibe_social",
+    "instructions": [
+        {
+            "name": "createUser",
+            "accounts": [
+                {
+                    "name": "userAccount",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "author",
+                    "isMut": true,
+                    "isSigner": true
+                },
+                {
+                    "name": "systemProgram",
+                    "isMut": false,
+                    "isSigner": false
+                }
+            ],
+            "args": [
+                {
+                    "name": "name",
+                    "type": "string"
+                },
+                {
+                    "name": "username",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "updateName",
+            "accounts": [
+                {
+                    "name": "userAccount",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "author",
+                    "isMut": true,
+                    "isSigner": true
+                }
+            ],
+            "args": [
+                {
+                    "name": "newname",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "createVibe",
+            "accounts": [
+                {
+                    "name": "vibe",
+                    "isMut": true,
+                    "isSigner": true
+                },
+                {
+                    "name": "author",
+                    "isMut": true,
+                    "isSigner": true
+                },
+                {
+                    "name": "systemProgram",
+                    "isMut": false,
+                    "isSigner": false
+                }
+            ],
+            "args": [
+                {
+                    "name": "topic",
+                    "type": "string"
+                },
+                {
+                    "name": "content",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "updateLikes",
+            "accounts": [
+                {
+                    "name": "like",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "vibe",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "liker",
+                    "isMut": true,
+                    "isSigner": true
+                },
+                {
+                    "name": "systemProgram",
+                    "isMut": false,
+                    "isSigner": false
+                }
+            ],
+            "args": []
+        },
+        {
+            "name": "removeLike",
+            "accounts": [
+                {
+                    "name": "like",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "vibe",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "liker",
+                    "isMut": true,
+                    "isSigner": true
+                }
+            ],
+            "args": []
+        },
+        {
+            "name": "deleteVibe",
+            "accounts": [
+                {
+                    "name": "vibe",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "author",
+                    "isMut": true,
+                    "isSigner": true
+                }
+            ],
+            "args": []
+        },
+        {
+            "name": "addComment",
+            "accounts": [
+                {
+                    "name": "comment",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "vibe",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "commentor",
+                    "isMut": true,
+                    "isSigner": true
+                },
+                {
+                    "name": "systemProgram",
+                    "isMut": false,
+                    "isSigner": false
+                }
+            ],
+            "args": [
+                {
+                    "name": "comment",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "removeComment",
+            "accounts": [
+                {
+                    "name": "comment",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "vibe",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "commentor",
+                    "isMut": true,
+                    "isSigner": true
+                }
+            ],
+            "args": []
+        },
+        {
+            "name": "followOne",
+            "accounts": [
+                {
+                    "name": "follow",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "followed",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "follower",
+                    "isMut": true,
+                    "isSigner": true
+                },
+                {
+                    "name": "systemProgram",
+                    "isMut": false,
+                    "isSigner": false
+                }
+            ],
+            "args": []
+        },
+        {
+            "name": "unfollow",
+            "accounts": [
+                {
+                    "name": "follow",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "followed",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "follower",
+                    "isMut": true,
+                    "isSigner": true
+                }
+            ],
+            "args": []
+        }
+    ],
+    "accounts": [
+        {
+            "name": "User",
+            "type": {
+                "kind": "struct",
+                "fields": [
+                    {
+                        "name": "userKey",
+                        "type": "publicKey"
+                    },
+                    {
+                        "name": "bump",
+                        "type": "u8"
+                    },
+                    {
+                        "name": "followers",
+                        "type": "u32"
+                    },
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "username",
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Vibe",
+            "type": {
+                "kind": "struct",
+                "fields": [
+                    {
+                        "name": "author",
+                        "type": "publicKey"
+                    },
+                    {
+                        "name": "timestamp",
+                        "type": "i64"
+                    },
+                    {
+                        "name": "topic",
+                        "type": "string"
+                    },
+                    {
+                        "name": "content",
+                        "type": "string"
+                    },
+                    {
+                        "name": "likes",
+                        "type": "u32"
+                    },
+                    {
+                        "name": "comments",
+                        "type": "u32"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Like",
+            "type": {
+                "kind": "struct",
+                "fields": [
+                    {
+                        "name": "bump",
+                        "type": "u8"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Comment",
+            "type": {
+                "kind": "struct",
+                "fields": [
+                    {
+                        "name": "vibe",
+                        "type": "publicKey"
+                    },
+                    {
+                        "name": "commentor",
+                        "type": "publicKey"
+                    },
+                    {
+                        "name": "comment",
+                        "type": "string"
+                    },
+                    {
+                        "name": "bump",
+                        "type": "u8"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Follow",
+            "type": {
+                "kind": "struct",
+                "fields": [
+                    {
+                        "name": "followed",
+                        "type": "publicKey"
+                    },
+                    {
+                        "name": "follower",
+                        "type": "publicKey"
+                    },
+                    {
+                        "name": "bump",
+                        "type": "u8"
+                    }
+                ]
+            }
+        }
+    ],
+    "types": [
+        {
+            "name": "ErrorCode",
+            "type": {
+                "kind": "enum",
+                "variants": [
+                    {
+                        "name": "NameTooLong"
+                    },
+                    {
+                        "name": "TopicTooLong"
+                    },
+                    {
+                        "name": "ContentTooLong"
+                    },
+                    {
+                        "name": "CommentTooLong"
+                    }
+                ]
+            }
+        }
+    ],
+    "metadata": {
+        "address": "3NcczXqNpzUsp6c2pGqLNJMnUwScvZBXduj8f3sg6Qdz"
+    }
+}
