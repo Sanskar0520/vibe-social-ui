@@ -74,12 +74,13 @@ const SidebarContent = () => {
             <Flex
                 h="20"
                 alignItems="center"
-                mx="8"
+                ml="20"
+                
                 justifyContent="space-between"
             >
                 {/*<img src={"https://synthesize.s3.ap-south-1.amazonaws.com/images/Aces+Labs+(3).png"} />*/}
                 <Text
-                    fontSize="2xl"
+                    fontSize="3xl"
                     fontFamily="monospace"
                     fontWeight="bold"
                     color={"white"}
@@ -115,9 +116,11 @@ const NavItem = ({ icon, name, url }) => {
             color={"white"}
         >
             <Flex
-                align="center"
-                p="4"
-                mx="4"
+                alignItems={"center"}
+                p="6"
+             paddingLeft={20}
+                fontSize={18}
+                marginTop={4}
                 borderRadius="lg"
                 role="group"
                 cursor="pointer"
@@ -127,8 +130,8 @@ const NavItem = ({ icon, name, url }) => {
                 }}
             >
                 <Icon
-                    mr="4"
-                    fontSize="16"
+                    mr="5"
+                    fontSize="20"
                     _groupHover={{
                         color: "white",
                     }}

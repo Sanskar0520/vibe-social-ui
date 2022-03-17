@@ -22,7 +22,7 @@ function Rightpane() {
   return (
     <Box
     bg={useColorModeValue("#11263E")}
-    borderRight="1px"
+   
  
     h="400px"
     w="400px"

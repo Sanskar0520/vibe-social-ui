@@ -24,7 +24,7 @@ import {
 import { clusterApiUrl } from "@solana/web3.js";
 import React, { FC, ReactNode, useMemo } from "react";
 import Dashboard from "./Pages/Dashboard";
-import { Box, useColorModeValue } from "@chakra-ui/react";
+import { Box, Flex, useColorModeValue } from "@chakra-ui/react";
 import AccDetails from "./Pages/AccDetails";
 import Profile from "./Pages/Profile";
 import Explore from "./Pages/Explore";
@@ -85,7 +85,8 @@ const Context: FC<{ children: ReactNode }> = ({ children }) => {
 export const Content = () => {
     return (
         <div className="Button">
-            <WalletMultiButton />
+            <Flex marginLeft={12} borderRadius={"20px"}>
+            <WalletMultiButton /></Flex>
         </div>
     );
 };
