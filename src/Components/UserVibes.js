@@ -2,47 +2,48 @@ import idl from "../idl.json";
 import Post from "./Post";
 
 import { Box, Heading } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useWallet } from "@solana/wallet-adapter-react";
 import { Program, Provider, web3 } from "@project-serum/anchor";
 import { Connection, PublicKey } from "@solana/web3.js";
-import bs58 from "bs58";
 
-const programID = new PublicKey(idl.metadata.address);
-const network = "http://127.0.0.1:8899";
-const opts = {
-    preflightCommitment: "processed",
-};
+function UserVibes({ provider, program }) {
+    const [isConnected, setIsConnected] = useState(false);
+    // const getProvider = () => {
+    //     const connection = new Connection(network, opts.preflightCommitment);
+    //     const provider = new Provider(
+    //         connection,
+    //         window.solana,
+    //         opts.preflightCommitment
+    //     );
+    //     return provider;
+    // };
 
-function UserVibes() {
-    const getProvider = () => {
-        const connection = new Connection(network, opts.preflightCommitment);
-        const provider = new Provider(
-            connection,
-            window.solana,
-            opts.preflightCommitment
-        );
-        return provider;
-    };
+    const wallet = useWallet();
 
-    useEffect(async () => {
-        try {
-            const provider = getProvider();
-            const program = new Program(idl, programID, provider);
-
+    const showVibes = async () => {
+        if (wallet.connected) {
             const vibes = await program.account.vibe.all([
                 {
                     memcmp: {
                         offset: 8,
-                        bytes: program.provider.wallet.publicKey,
+                        bytes: wallet.publicKey,
                     },
                 },
             ]);
-
             console.log(vibes);
+        } else {
+            console.log("Wallet not yet connected");
+        }
+    };
+
+    useEffect(async () => {
+        try {
+            await showVibes();
         } catch (e) {
             console.log(e);
         }
-    }, []);
+    }, [wallet]);
 
     return (
         <Box
